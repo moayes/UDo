@@ -18,10 +18,11 @@
 		6D3189DB187C422A00994DDF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D3189C3187C422A00994DDF /* UIKit.framework */; };
 		6D3189E3187C422A00994DDF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D3189E1187C422A00994DDF /* InfoPlist.strings */; };
 		6D3189E5187C422A00994DDF /* UDoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3189E4187C422A00994DDF /* UDoTests.m */; };
-		6D3189F1187C427400994DDF /* RWTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3189F0187C427400994DDF /* RWTableViewController.m */; };
+		6D3189F1187C427400994DDF /* RWCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3189F0187C427400994DDF /* RWCollectionViewController.m */; };
 		6D3189F3187C42A800994DDF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D3189F2187C42A800994DDF /* Images.xcassets */; };
 		6D3189F5187C42BD00994DDF /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D3189F4187C42BD00994DDF /* Storyboard.storyboard */; };
 		6D3189F8187C438B00994DDF /* UIAlertView+RWBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3189F7187C438B00994DDF /* UIAlertView+RWBlock.m */; };
+		6D6A202C18876BF1009A41E0 /* RWCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6A202B18876BF1009A41E0 /* RWCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,12 +51,14 @@
 		6D3189E0187C422A00994DDF /* UDoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UDoTests-Info.plist"; sourceTree = "<group>"; };
 		6D3189E2187C422A00994DDF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6D3189E4187C422A00994DDF /* UDoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UDoTests.m; sourceTree = "<group>"; };
-		6D3189EF187C427400994DDF /* RWTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTableViewController.h; sourceTree = "<group>"; };
-		6D3189F0187C427400994DDF /* RWTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWTableViewController.m; sourceTree = "<group>"; };
+		6D3189EF187C427400994DDF /* RWCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWCollectionViewController.h; sourceTree = "<group>"; };
+		6D3189F0187C427400994DDF /* RWCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWCollectionViewController.m; sourceTree = "<group>"; };
 		6D3189F2187C42A800994DDF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6D3189F4187C42BD00994DDF /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		6D3189F6187C438B00994DDF /* UIAlertView+RWBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+RWBlock.h"; sourceTree = "<group>"; };
 		6D3189F7187C438B00994DDF /* UIAlertView+RWBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+RWBlock.m"; sourceTree = "<group>"; };
+		6D6A202A18876BF1009A41E0 /* RWCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWCollectionViewCell.h; sourceTree = "<group>"; };
+		6D6A202B18876BF1009A41E0 /* RWCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,8 +121,10 @@
 				6D3189F4187C42BD00994DDF /* Storyboard.storyboard */,
 				6D3189CE187C422A00994DDF /* RWAppDelegate.h */,
 				6D3189CF187C422A00994DDF /* RWAppDelegate.m */,
-				6D3189EF187C427400994DDF /* RWTableViewController.h */,
-				6D3189F0187C427400994DDF /* RWTableViewController.m */,
+				6D3189EF187C427400994DDF /* RWCollectionViewController.h */,
+				6D3189F0187C427400994DDF /* RWCollectionViewController.m */,
+				6D6A202A18876BF1009A41E0 /* RWCollectionViewCell.h */,
+				6D6A202B18876BF1009A41E0 /* RWCollectionViewCell.m */,
 				6D3189F6187C438B00994DDF /* UIAlertView+RWBlock.h */,
 				6D3189F7187C438B00994DDF /* UIAlertView+RWBlock.m */,
 				6D3189F2187C42A800994DDF /* Images.xcassets */,
@@ -257,9 +262,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D6A202C18876BF1009A41E0 /* RWCollectionViewCell.m in Sources */,
 				6D3189F8187C438B00994DDF /* UIAlertView+RWBlock.m in Sources */,
 				6D3189CC187C422A00994DDF /* main.m in Sources */,
-				6D3189F1187C427400994DDF /* RWTableViewController.m in Sources */,
+				6D3189F1187C427400994DDF /* RWCollectionViewController.m in Sources */,
 				6D3189D0187C422A00994DDF /* RWAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

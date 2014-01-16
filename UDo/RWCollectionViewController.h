@@ -1,5 +1,5 @@
 //
-//  RWTableViewController.h
+//  RWCollectionViewController.h
 //  UDo
 //
 //  Created by Soheil Azarpour on 12/21/13.
@@ -8,6 +8,6 @@
 
 @import UIKit;
 
-@interface RWTableViewController : UITableViewController
+@interface RWCollectionViewController : UICollectionViewController
 
 @end

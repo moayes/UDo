@@ -1,22 +1,23 @@
 //
-//  RWTableViewController.m
+//  RWCollectionViewController.m
 //  UDo
 //
 //  Created by Soheil Azarpour on 12/21/13.
 //  Copyright (c) 2013 Ray Wenderlich. All rights reserved.
 //
 
-#import "RWTableViewController.h"
+#import "RWCollectionViewController.h"
+#import "RWCollectionViewCell.h"
 #import "UIAlertView+RWBlock.h"
 
-@interface RWTableViewController ()
+@interface RWCollectionViewController ()
 
-/** @brief An array of NSString objects, data source of the table view. */
+/** @brief An array of NSString objects, data source of the collection view. */
 @property (strong, nonatomic) NSMutableArray *objects;
 
 @end
 
-@implementation RWTableViewController
+@implementation RWCollectionViewController
 
 #pragma mark - Custom accessors
 
@@ -33,21 +34,21 @@
   self.title = @"To Do!";
   
   UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGestureRecognized:)];
-  [self.tableView addGestureRecognizer:longPress];
+  [self.collectionView addGestureRecognizer:longPress];
   
   [super viewDidLoad];
 }
 
 #pragma mark - UITableView data source and delegate methods
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
   return [self.objects count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
   static NSString *kIdentifier = @"Cell Identifier";
   
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kIdentifier forIndexPath:indexPath];
+  RWCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kIdentifier forIndexPath:indexPath];
   
   // Update cell content from data source.
   NSString *object = self.objects[indexPath.row];
@@ -55,19 +56,6 @@
   cell.textLabel.text = object;
   
   return cell;
-}
-
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-  return YES;
-}
-
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-  return UITableViewCellEditingStyleDelete;
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-  [self.objects removeObjectAtIndex:indexPath.row];
-  [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark - IBActions
@@ -79,7 +67,7 @@
   
   inputAlertView.alertViewStyle = UIAlertViewStylePlainTextInput;
   
-  __weak RWTableViewController *weakself = self;
+  __weak RWCollectionViewController *weakself = self;
   
   // Add a completion block (using our category to UIAlertView).
   [inputAlertView setCompletionBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
@@ -93,7 +81,7 @@
       
       NSUInteger row = [weakself.objects count] - 1;
       NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
-      [weakself.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+      [weakself.collectionView insertItemsAtIndexPaths:@[indexPath]];
     }
   }];
   
@@ -105,8 +93,8 @@
   UILongPressGestureRecognizer *longPress = (UILongPressGestureRecognizer *)sender;
   UIGestureRecognizerState state = longPress.state;
   
-  CGPoint location = [longPress locationInView:self.tableView];
-  NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
+  CGPoint location = [longPress locationInView:self.collectionView];
+  NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:location];
   
   static UIView       *snapshot = nil;        ///< A snapshot of the row user is moving.
   static NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begins.
@@ -116,7 +104,7 @@
       if (indexPath) {
         sourceIndexPath = indexPath;
         
-        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
         
         // Take a snapshot of the selected row using helper method.
         snapshot = [self customSnapshoFromView:cell];
@@ -125,7 +113,7 @@
         __block CGPoint center = cell.center;
         snapshot.center = center;
         snapshot.alpha = 0.0;
-        [self.tableView addSubview:snapshot];
+        [self.collectionView addSubview:snapshot];
         [UIView animateWithDuration:0.25 animations:^{
           
           // Offset for gesture location.
@@ -150,7 +138,7 @@
       if (indexPath && ![indexPath isEqual:sourceIndexPath]) {
         
         // ... if so, move the rows.
-        [self.tableView moveRowAtIndexPath:sourceIndexPath toIndexPath:indexPath];
+        [self.collectionView moveItemAtIndexPath:sourceIndexPath toIndexPath:indexPath];
         
         // ... update data source.
         [self moveObjectAtIndex:sourceIndexPath.row toIndex:indexPath.row];
@@ -163,7 +151,7 @@
       
     default: {
       // Clean up.
-      UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:sourceIndexPath];
+      UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:sourceIndexPath];
       [UIView animateWithDuration:0.25 animations:^{
         
         snapshot.center = cell.center;
