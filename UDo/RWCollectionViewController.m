@@ -137,11 +137,11 @@
       // Is destination valid and is it different from source?
       if (indexPath && ![indexPath isEqual:sourceIndexPath]) {
         
-        // ... if so, move the rows.
-        [self.collectionView moveItemAtIndexPath:sourceIndexPath toIndexPath:indexPath];
-        
         // ... update data source.
-        [self moveObjectAtIndex:sourceIndexPath.row toIndex:indexPath.row];
+        [self.objects exchangeObjectAtIndex:indexPath.row withObjectAtIndex:sourceIndexPath.row];
+        
+        // ... move the rows.
+        [self.collectionView moveItemAtIndexPath:sourceIndexPath toIndexPath:indexPath];
         
         // ... and update source so it is in sync with UI changes.
         sourceIndexPath = indexPath;
@@ -155,7 +155,7 @@
       [UIView animateWithDuration:0.25 animations:^{
         
         snapshot.center = cell.center;
-        snapshot.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        snapshot.transform = CGAffineTransformIdentity;
         snapshot.alpha = 0.0;
         
         // Undo the black-out effect we did.
@@ -186,13 +186,6 @@
   snapshot.layer.shadowOpacity = 0.4;
   
   return snapshot;
-}
-
-/** @brief Moves object in data source array from one index to another index. */
-- (void)moveObjectAtIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex {
-  id objectToMove = self.objects[fromIndex];
-  [self.objects insertObject:objectToMove atIndex:toIndex];
-  [self.objects removeObjectAtIndex:fromIndex];
 }
 
 @end
