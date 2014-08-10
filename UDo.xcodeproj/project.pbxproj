@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6190AF3F199659AE00E12D44 /* RWBasicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6190AF3E199659AE00E12D44 /* RWBasicTableViewCell.m */; };
 		6D3189C0187C422A00994DDF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D3189BF187C422A00994DDF /* Foundation.framework */; };
 		6D3189C2187C422A00994DDF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D3189C1187C422A00994DDF /* CoreGraphics.framework */; };
 		6D3189C4187C422A00994DDF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D3189C3187C422A00994DDF /* UIKit.framework */; };
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6190AF3D199659AE00E12D44 /* RWBasicTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWBasicTableViewCell.h; sourceTree = "<group>"; };
+		6190AF3E199659AE00E12D44 /* RWBasicTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWBasicTableViewCell.m; sourceTree = "<group>"; };
 		6D3189BC187C422A00994DDF /* UDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D3189BF187C422A00994DDF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6D3189C1187C422A00994DDF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -120,6 +123,8 @@
 				6D3189CF187C422A00994DDF /* RWAppDelegate.m */,
 				6D3189EF187C427400994DDF /* RWTableViewController.h */,
 				6D3189F0187C427400994DDF /* RWTableViewController.m */,
+				6190AF3D199659AE00E12D44 /* RWBasicTableViewCell.h */,
+				6190AF3E199659AE00E12D44 /* RWBasicTableViewCell.m */,
 				6D3189F6187C438B00994DDF /* UIAlertView+RWBlock.h */,
 				6D3189F7187C438B00994DDF /* UIAlertView+RWBlock.m */,
 				6D3189F2187C42A800994DDF /* Images.xcassets */,
@@ -260,6 +265,7 @@
 				6D3189F8187C438B00994DDF /* UIAlertView+RWBlock.m in Sources */,
 				6D3189CC187C422A00994DDF /* main.m in Sources */,
 				6D3189F1187C427400994DDF /* RWTableViewController.m in Sources */,
+				6190AF3F199659AE00E12D44 /* RWBasicTableViewCell.m in Sources */,
 				6D3189D0187C422A00994DDF /* RWAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
