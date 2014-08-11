@@ -1,0 +1,6 @@
+.DS_Store
+*.pbxuser
+xcuserdata
+
+# Ignore the workspace
+*.xcworkspace/xcshareddata/*.xccheckout
