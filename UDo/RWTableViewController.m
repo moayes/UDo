@@ -7,6 +7,7 @@
 //
 
 #import "RWTableViewController.h"
+#import "RWBasicTableViewCell.h"
 #import "UIAlertView+RWBlock.h"
 
 @interface RWTableViewController ()
@@ -47,12 +48,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   static NSString *kIdentifier = @"Cell Identifier";
   
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kIdentifier forIndexPath:indexPath];
+  RWBasicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kIdentifier forIndexPath:indexPath];
   
   // Update cell content from data source.
   NSString *object = self.objects[indexPath.row];
-  cell.backgroundColor = [UIColor whiteColor];
-  cell.textLabel.text = object;
+  cell.titleLabel.text = object;
   
   return cell;
 }
@@ -133,10 +133,13 @@
           snapshot.center = center;
           snapshot.transform = CGAffineTransformMakeScale(1.05, 1.05);
           snapshot.alpha = 0.98;
+          cell.alpha = 0.0;
           
-          // Black out.
-          cell.backgroundColor = [UIColor blackColor];
-        } completion:nil];
+        } completion:^(BOOL finished) {
+          
+          cell.hidden = YES;
+          
+        }];
       }
       break;
     }
@@ -164,22 +167,24 @@
     default: {
       // Clean up.
       UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:sourceIndexPath];
+      cell.hidden = NO;
+      cell.alpha = 0.0;
+      
       [UIView animateWithDuration:0.25 animations:^{
         
         snapshot.center = cell.center;
         snapshot.transform = CGAffineTransformIdentity;
         snapshot.alpha = 0.0;
-        
-        // Undo the black-out effect we did.
-        cell.backgroundColor = [UIColor whiteColor];
+        cell.alpha = 1.0;
         
       } completion:^(BOOL finished) {
         
+        sourceIndexPath = nil;
         [snapshot removeFromSuperview];
         snapshot = nil;
         
       }];
-      sourceIndexPath = nil;
+      
       break;
     }
   }
