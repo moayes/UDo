@@ -7,6 +7,7 @@
 //
 
 #import "RWTableViewController.h"
+#import "RWBasicTableViewCell.h"
 #import "UIAlertView+RWBlock.h"
 
 @interface RWTableViewController ()
@@ -43,12 +44,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   static NSString *kIdentifier = @"Cell Identifier";
   
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kIdentifier forIndexPath:indexPath];
+  RWBasicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kIdentifier forIndexPath:indexPath];
   
   // Update cell content from data source.
   NSString *object = self.objects[indexPath.row];
-  cell.backgroundColor = [UIColor whiteColor];
-  cell.textLabel.text = object;
+  cell.titleLabel.text = object;
   
   return cell;
 }
