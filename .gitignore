@@ -3,4 +3,4 @@
 xcuserdata
 
 # Ignore the workspace
-*.xcworkspace/xcshareddata/*.xccheckout
+UDo.xcodeproj/project.xcworkspace/
