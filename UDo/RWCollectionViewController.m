@@ -122,8 +122,8 @@
           snapshot.transform = CGAffineTransformMakeScale(1.05, 1.05);
           snapshot.alpha = 0.98;
           
-          // Black out.
-          cell.backgroundColor = [UIColor blackColor];
+          // Fade out.
+          cell.alpha = 0.0;
         } completion:nil];
       }
       break;
@@ -158,8 +158,8 @@
         snapshot.transform = CGAffineTransformIdentity;
         snapshot.alpha = 0.0;
         
-        // Undo the black-out effect we did.
-        cell.backgroundColor = [UIColor whiteColor];
+        // Undo the fade-out effect we did.
+        cell.alpha = 1.0;
         
       } completion:^(BOOL finished) {
         
@@ -178,7 +178,14 @@
 /** @brief Returns a customized snapshot of a given view. */
 - (UIView *)customSnapshoFromView:(UIView *)inputView {
   
-  UIView *snapshot = [inputView snapshotViewAfterScreenUpdates:YES];
+  // Make an image from the input view.
+  UIGraphicsBeginImageContextWithOptions(inputView.bounds.size, NO, 0);
+  [inputView.layer renderInContext:UIGraphicsGetCurrentContext()];
+  UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+  UIGraphicsEndImageContext();
+  
+  // Create an image view.
+  UIView *snapshot = [[UIImageView alloc] initWithImage:image];
   snapshot.layer.masksToBounds = NO;
   snapshot.layer.cornerRadius = 0.0;
   snapshot.layer.shadowOffset = CGSizeMake(-5.0, 0.0);
