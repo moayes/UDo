@@ -195,7 +195,14 @@
 /** @brief Returns a customized snapshot of a given view. */
 - (UIView *)customSnapshoFromView:(UIView *)inputView {
   
-  UIView *snapshot = [inputView snapshotViewAfterScreenUpdates:YES];
+  // Make an image from the input view.
+  UIGraphicsBeginImageContextWithOptions(inputView.bounds.size, NO, 0);
+  [inputView.layer renderInContext:UIGraphicsGetCurrentContext()];
+  UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+  UIGraphicsEndImageContext();
+    
+  // Create an image view.
+  UIView *snapshot = [[UIImageView alloc] initWithImage:image];
   snapshot.layer.masksToBounds = NO;
   snapshot.layer.cornerRadius = 0.0;
   snapshot.layer.shadowOffset = CGSizeMake(-5.0, 0.0);

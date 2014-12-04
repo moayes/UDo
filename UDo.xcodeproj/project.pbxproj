@@ -93,7 +93,9 @@
 				6D3189BE187C422A00994DDF /* Frameworks */,
 				6D3189BD187C422A00994DDF /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		6D3189BD187C422A00994DDF /* Products */ = {
 			isa = PBXGroup;
