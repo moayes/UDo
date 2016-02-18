@@ -134,9 +134,6 @@
           snapshot.transform = CGAffineTransformMakeScale(1.05, 1.05);
           snapshot.alpha = 0.98;
           cell.alpha = 0.0;
-          
-        } completion:^(BOOL finished) {
-          
           cell.hidden = YES;
           
         }];
@@ -167,7 +164,6 @@
     default: {
       // Clean up.
       UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:sourceIndexPath];
-      cell.hidden = NO;
       cell.alpha = 0.0;
       
       [UIView animateWithDuration:0.25 animations:^{
@@ -178,7 +174,8 @@
         cell.alpha = 1.0;
         
       } completion:^(BOOL finished) {
-        
+      
+        cell.hidden = NO;
         sourceIndexPath = nil;
         [snapshot removeFromSuperview];
         snapshot = nil;
